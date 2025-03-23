@@ -3,10 +3,12 @@ import { AngularMaterialModule } from "../angular-material/angular-material.modu
 import { ContatoDetailsComponent } from './contato-details/contato-details.component';
 import { FilterComponent } from './filter/filter.component';
 import { FormsModule } from "@angular/forms";
+import { ContatosListComponent } from './contatos-list/contatos-list.component';
 @NgModule({
     declarations:[
         ContatoDetailsComponent,
         FilterComponent,
+        ContatosListComponent,
   ],
     imports:[
         AngularMaterialModule,
@@ -15,7 +17,8 @@ import { FormsModule } from "@angular/forms";
     exports:[
         ContatoDetailsComponent,
         FilterComponent,
-        FormsModule
+        FormsModule,
+        ContatosListComponent
     ]
     })
 export class ComponentsModule {
