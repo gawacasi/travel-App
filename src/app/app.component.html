@@ -1,18 +1,7 @@
 <div class="container">
-    <tbody>
-        <tr *ngFor="let contato of contatos">
-            <td>{{ contato.contato_nome }}</td>
-        </tr>
-    </tbody>
-    <div class="left-container">
-        <div class="top-div">
-            <app-filter></app-filter>
-        </div>
+    <div class="list-container">
         <div class="main-left-div">
-            <app-contatos-list></app-contatos-list>
+            <router-outlet></router-outlet> 
         </div>
-    </div>
-    <div class="right-div">
-        <app-contato-details></app-contato-details>
     </div>
 </div>

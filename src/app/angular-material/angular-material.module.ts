@@ -11,6 +11,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
+
+
 @NgModule({
     imports:[
         MatPaginatorModule,
@@ -23,7 +27,9 @@ import { MatCardModule } from '@angular/material/card';
         MatCheckboxModule,
         MatSelectModule,
         MatTableModule,
-        MatCardModule
+        MatCardModule,
+        MatSlideToggleModule,
+        MatIconModule
     ],
     exports:[
         MatPaginatorModule,
@@ -36,7 +42,9 @@ import { MatCardModule } from '@angular/material/card';
         MatCheckboxModule,
         MatSelectModule,
         MatTableModule,
-        MatCardModule
+        MatCardModule,
+        MatSlideToggleModule,
+        MatIconModule
     ],
     providers:[provideNativeDateAdapter()]
 })

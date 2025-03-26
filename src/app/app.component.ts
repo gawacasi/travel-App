@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { environment } from '../environments/environment';
 import { ContatoService } from './services/contato.service';
 import { IContato } from './interfaces/contato.interfaces';
+
 
 @Component({
   selector: 'app-root',
@@ -22,5 +22,9 @@ export class AppComponent {
     this.contatoService.getContatos()
       .subscribe(contatos => this.contatos = contatos)
   }
+
 }
+
+
+
 

@@ -1,0 +1,49 @@
+<div class="edit-contato-modal-overlay">
+    <div class="edit-contato-modal">
+      <h2>Editar Contato</h2>
+      <div *ngIf="contato">
+        <form (ngSubmit)="saveContato()">
+          <div>
+            <label for="nome">Nome</label>
+            <input id="nome" [(ngModel)]="contato.contato_nome" name="nome" required />
+          </div>
+      
+          <div>
+            <label for="email">Email</label>
+            <input id="email" [(ngModel)]="contato.contato_email" name="email" type="email" required />
+          </div>
+      
+          <div>
+            <label for="telefone">Celular</label>
+            <input id="telefone" [(ngModel)]="contato.contato_celular" name="Celular" required />
+          </div>
+      
+          <div>
+            <label for="telefone">Telefone</label>
+            <input id="telefone" [(ngModel)]="contato.contato_telefone" name="telefone" />
+          </div>
+      
+          <div>
+            <label for="status">Status</label>
+            <select id="status" [(ngModel)]="contato.contato_sn_ativo" name="status">
+              <option value="S">Ativo</option>
+              <option value="N">Inativo</option>
+            </select>
+          </div>
+      
+          <div>
+            <label for="favorito">Favorito</label>
+            <select id="favorito" [(ngModel)]="contato.contato_sn_favorito" name="favorito">
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+      
+          <button type="submit" [disabled]="!contato?.contato_nome || !contato?.contato_email">Salvar</button>
+        </form>
+      
+        <button [routerLink]="['/']">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  

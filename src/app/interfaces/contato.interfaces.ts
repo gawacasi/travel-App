@@ -1,4 +1,5 @@
 export interface IContato {
+    contato_id: number
     contato_nome: string
     contato_email: string
     contato_celular: string

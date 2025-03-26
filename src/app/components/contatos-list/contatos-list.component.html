@@ -1,30 +1,56 @@
-<mat-card appearance="outlined">
+<mat-card appearance="outlined" class="card">
 <div class="contatos-list">
     <table mat-table [dataSource]="contatos">
         <ng-container matColumnDef="nome">
             <th mat-header-cell *matHeaderCellDef> Nome </th>
-            <td mat-cell *matCellDef="let element" class="contatos-list__item" (click)="onContatoSelected(element)"> {{element.contato_nome}} </td>
+            <td mat-cell *matCellDef="let element" class="contatos-list__item" (click)="abrirDetalhes(element)"> {{element.contato_nome}} </td>
         </ng-container>
 
         <ng-container matColumnDef="dataCadastro">
             <th mat-header-cell *matHeaderCellDef> Data de Cadastro </th>
-            <td mat-cell *matCellDef="let element" class="contatos-list__item" (click)="onContatoSelected(element)"> {{ element.contato_dh_cad }}</td>
+            <td mat-cell *matCellDef="let element" class="contatos-list__item" (click)="abrirDetalhes(element)"> {{ formatarData( element.contato_dh_cad)}}</td>
         </ng-container>
 
         <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef> Status </th>
-            <td mat-cell *matCellDef="let element" class="contatos-list__item" (click)="onContatoSelected(element)"> {{element.contato_sn_ativo == "S" ?
+            <td mat-cell *matCellDef="let element" class="contatos-list__item" (click)="abrirDetalhes(element)"> {{element.contato_sn_ativo == "S" ?
                 "Ativo" : "Inativo" }} </td>
         </ng-container>
 
         <ng-container matColumnDef="favorito">
             <th mat-header-cell *matHeaderCellDef> Favorito </th>
-            <td mat-cell *matCellDef="let element" class="contatos-list__item" (click)="onContatoSelected(element)"> {{element.contato_sn_favorito == "N" ?
-                "Sim" : "Nao" }} </td>
+            <td mat-cell *matCellDef="let element" class="contatos-list__item" (click)="abrirDetalhes(element)" [innerHTML]="formatarFavorito(element.contato_sn_favorito)"></td>
         </ng-container>
 
+        <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef> Editar </th>
+            <td mat-cell *matCellDef="let element" class="contatos-list__item">
+              <ng-container class="favorito-container">
+                <button [routerLink]="['/editar-contato', element.id]" class="editar-btn">
+                  <i class="bi bi-pencil"></i> 
+                </button>
+              </ng-container>
+            </td>
+          </ng-container>
+          
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div></mat-card>
+
+<div *ngIf="detalhesVisiveis" class="modal-overlay">
+    <div class="modal-content">
+        <button (click)="fecharModal()" class="close-btn">X</button>
+        <h2>Detalhes do Contato</h2>
+        <p><strong>Nome:</strong> {{ contatoSelecionado?.contato_nome }}</p>
+        <p><strong>Email:</strong> {{ contatoSelecionado?.contato_email }}</p>
+        <p><strong>Celular:</strong> {{ contatoSelecionado?.contato_celular }}</p>
+        <p><strong>Telefone:</strong> {{ contatoSelecionado?.contato_telefone }}</p>
+        <p><strong>Status:</strong> {{ contatoSelecionado?.contato_sn_ativo === 'S' ? 'Ativo' : 'Inativo' }}</p>
+        <p><strong>Data de Cadastro:</strong> {{ formatarData(contatoSelecionado?.contato_dh_cad)}}</p>
+        <p><strong>Favorito:</strong> {{ contatoSelecionado?.contato_sn_fav === 'S' ? 'Sim' : 'Nao'}}</p>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
