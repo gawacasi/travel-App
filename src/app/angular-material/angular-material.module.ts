@@ -10,7 +10,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
     imports:[
         MatPaginatorModule,
@@ -22,7 +22,8 @@ import { MatTableModule } from '@angular/material/table';
         MatDatepickerModule,
         MatCheckboxModule,
         MatSelectModule,
-        MatTableModule
+        MatTableModule,
+        MatCardModule
     ],
     exports:[
         MatPaginatorModule,
@@ -34,7 +35,8 @@ import { MatTableModule } from '@angular/material/table';
         MatDatepickerModule,
         MatCheckboxModule,
         MatSelectModule,
-        MatTableModule
+        MatTableModule,
+        MatCardModule
     ],
     providers:[provideNativeDateAdapter()]
 })

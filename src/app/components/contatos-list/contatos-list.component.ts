@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IContato } from '../../interfaces/contato.interfaces';
 import { ContatoList } from '../../data/contatato-list';
 import { DatePipe } from '@angular/common';
+import { ContatoService } from '../../services/contato.service';
 
 @Component({
   selector: 'app-contatos-list',
@@ -12,6 +13,17 @@ import { DatePipe } from '@angular/common';
 })
 
 export class ContatosListComponent {
+
+    contatos: IContato[] = [];
+  
+    constructor(private contatoService: ContatoService){
+      this.getContatosCadastrados()
+    }
+  
+    getContatosCadastrados(){
+      this.contatoService.getContatos()
+        .subscribe(contatos => this.contatos = contatos)
+    }
   contatoList:IContato[] = ContatoList;
   displayedColumns: string[] = ["nome","dataCadastro","status" ,"favorito"];
     
