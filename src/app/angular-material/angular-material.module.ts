@@ -13,10 +13,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatPaginator } from '@angular/material/paginator';
 
 @NgModule({
     imports:[
+        MatPaginator,
         MatPaginatorModule,
         MatListModule,
         MatButtonModule,
@@ -32,6 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
         MatIconModule
     ],
     exports:[
+        MatPaginator,
         MatPaginatorModule,
         MatListModule,
         MatButtonModule,

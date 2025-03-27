@@ -5,12 +5,14 @@ import { ContatosListComponent } from './contatos-list/contatos-list.component';
 import { CommonModule } from "@angular/common";
 import { EditContatoComponent } from './edit-contato/edit-contato.component';
 import { RouterModule } from "@angular/router";
+import { AddContatoComponent } from './add-contato/add-contato.component';
 
 
 @NgModule({
     declarations:[
         ContatosListComponent,
         EditContatoComponent,
+        AddContatoComponent,
   ],
     imports:[
         AngularMaterialModule,

@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IContato } from '../../interfaces/contato.interfaces';
 import { ContatoList } from '../../data/contatato-list';
 import { DatePipe } from '@angular/common';
 import { ContatoService } from '../../services/contato.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Subscription, interval } from 'rxjs';
-import { RouterModule } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-contatos-list',
@@ -23,22 +25,36 @@ export class ContatosListComponent {
     contatoList:IContato[] = ContatoList;
     displayedColumns: string[] = ["nome","dataCadastro","status" ,"favorito","editar"];
     private contatosSubscription!: Subscription;
+    dataSource = new MatTableDataSource<IContato>();
+
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
 
     ngOnInit(): void {
       this.getContatosCadastrados();
   
-      this.contatosSubscription = interval(5000).subscribe(() => {
+      this.contatosSubscription = interval(1000).subscribe(() => {
         this.getContatosCadastrados();
       });
+    }
+
+    ngAfterViewInit(): void {
+      this.dataSource.paginator = this.paginator;
     }
 
     constructor(private contatoService: ContatoService,private sanitizer: DomSanitizer,private datePipe: DatePipe){
       this.getContatosCadastrados()
     }
   
-    getContatosCadastrados(){
+    getContatosCadastrados() {
       this.contatoService.getContatos()
-        .subscribe(contatos => this.contatos = contatos)
+        .subscribe(contatos => {
+          this.contatos = contatos;
+          this.dataSource.data = this.contatos;
+          if (this.paginator) {
+            this.dataSource.paginator = this.paginator; 
+          }
+    
+        });
     }
 
     formatarFavorito(favorito: string): SafeHtml {

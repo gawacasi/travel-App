@@ -39,17 +39,26 @@
           </select>
         </div>
 
-        <button type="submit" [disabled]="!contato || !contato.contato_nome || !contato.contato_email">Salvar</button>
+      <div class="botoes-container">
+        <button type="submit" class="btn btn-primary"
+          [disabled]="!contato || !contato.contato_nome || !contato.contato_email">
+          Salvar
+        </button>
 
+        <button class="btn btn-secondary" [routerLink]="['/']">
+          Cancelar
+        </button>
+
+        <button class="btn btn-danger excluir-btn" (click)="deletarContato(contatoId)">
+          Excluir Contato
+        </button>
+      </div>
       </form>
 
-      <button [routerLink]="['/']">Cancelar</button>
 
     </div>
 
-    <button class="btn btn-danger" (click)="deletarContato(contatoId)">
-      Excluir Contato
-    </button>
 
   </div>
 </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
