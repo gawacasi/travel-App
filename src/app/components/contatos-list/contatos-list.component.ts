@@ -72,7 +72,7 @@ export class ContatosListComponent {
     }
 
     formatarData(data: string): string {
-      return this.datePipe.transform(data, 'dd MMMM yyyy, HH:mm') || '';  // Formato desejado: "26 março 2025, 00:49"
+      return this.datePipe.transform(data, 'dd MMMM yyyy, HH:mm') || ''; 
     }
     
     editarContato(contato: IContato) {

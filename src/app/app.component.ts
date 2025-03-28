@@ -10,7 +10,7 @@ import { IContato } from './interfaces/contato.interfaces';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-
+  title = 'contatos-app';
 
   contatos: IContato[] = [];
 
