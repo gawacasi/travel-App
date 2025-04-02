@@ -26,6 +26,15 @@
     max-height: 100vh;
 }
 
+.cute-computer {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  z-index: 1000;
+  width: 650px; 
+  height: 350px; 
+}
+
 .modal-overlay {
     position: fixed;
     top: 0;

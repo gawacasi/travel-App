@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@splinetool/viewer": "^1.9.82",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "listr2": "^8.2.5",
