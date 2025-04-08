@@ -19,17 +19,17 @@
 
 .main-left-div {
     height: 80%;
+    z-index: 2;
 }
 
 .right-div {
     width: 30%;
     max-height: 100vh;
+    z-index: 2;
 }
 
-.cute-computer {
+.planet{
   position: fixed;
-  bottom: -250px;
-  left: -590px;
   z-index: 1;
   width: 100%; 
   height: 100%; 
